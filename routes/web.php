@@ -23,6 +23,12 @@ Route::get('/freeplan', function () {
 
 
 
+Route::get('/premiumplan', function () {
+    return view('premiumplan');
+})->name('premiumplan.blade');
+
+
+
 Route::get('/forgetpassword', function () {
     return view('forgetpassword');
 })->name('forgetpassword');
