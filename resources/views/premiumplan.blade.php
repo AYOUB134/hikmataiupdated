@@ -1,3 +1,4 @@
+<!-- premium code  -->
 @extends('layouts.app')
 
 @section('title', 'تدریسی منصوبہ (پریمیم)')

@@ -22,7 +22,7 @@ Route::get('/freeplan', function () {
 })->name('freeplan');
 
 
-
+// <!-- premium code  -->
 Route::get('/premiumplan', function () {
     return view('premiumplan');
 })->name('premiumplan.blade');
