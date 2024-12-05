@@ -25,7 +25,12 @@ Route::get('/freeplan', function () {
 // <!-- premium code  -->
 Route::get('/premiumplan', function () {
     return view('premiumplan');
-})->name('premiumplan.blade');
+})->name('premiumplan');
+
+Route::get('/userprofile', function () {
+    return view('userprofile');
+})->name('userprofile');
+
 
 
 
@@ -49,5 +54,4 @@ Route::get('/register', function () {
 
 
 
-Route::post('/download-lesson-plan-pdf', 'LessonPlanController@downloadPdf');
 
