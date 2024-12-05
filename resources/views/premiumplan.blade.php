@@ -1,4 +1,3 @@
-<!-- premium code  -->
 @extends('layouts.app')
 
 @section('title', 'تدریسی منصوبہ (پریمیم)')
@@ -81,6 +80,7 @@
         .lesson-plan-copy {
             display: none;
             margin-top: 1rem;
+            margin-right: 10px;
         }
         .copy-feedback {
             display: none;
@@ -251,6 +251,8 @@
                 </table>
 
                 <button class="lesson-plan-copy" id="copyButton">کاپی کریں</button>
+                <button class="lesson-plan-copy" id="downloadPdfButton">ڈاؤن لوڈ پی ڈی ایف</button>
+
                 <div class="copy-feedback" id="copyFeedback">منصوبہ کاپی ہو گیا ہے!</div>
             </div>
         </div>
@@ -295,9 +297,10 @@
             document.getElementById('quizTypeOutput').textContent = data.quiz_type;
             document.getElementById('quizQuestionNumberOutput').textContent = data.quiz_question_number;
             
-            // Show the lesson plan output and copy button
+            // Show the lesson plan output and buttons
             document.getElementById('lessonPlanOutput').style.display = 'block';
             document.getElementById('copyButton').style.display = 'inline-block';
+            document.getElementById('downloadPdfButton').style.display = 'inline-block';
             
             // Scroll to the lesson plan output
             document.getElementById('lessonPlanOutput').scrollIntoView({ behavior: 'smooth' });
@@ -322,6 +325,33 @@
             }
             
             window.getSelection().removeAllRanges();
+        });
+
+        document.getElementById('downloadPdfButton').addEventListener('click', function() {
+            // Collect form data
+            const formData = new FormData(document.getElementById('lessonPlanForm'));
+            
+            // Send a POST request to the server
+            fetch('/download-lesson-plan-pdf', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            })
+            .then(response => response.blob())
+            .then(blob => {
+                // Create a temporary URL for the blob
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'lesson_plan.pdf';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => console.error('Error:', error));
         });
     </script>
 @endsection

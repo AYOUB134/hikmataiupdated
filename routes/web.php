@@ -49,5 +49,5 @@ Route::get('/register', function () {
 
 
 
-
+Route::post('/download-lesson-plan-pdf', 'LessonPlanController@downloadPdf');
 
