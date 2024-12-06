@@ -96,13 +96,39 @@
             display: inline-block;
             margin-bottom: 10px;
         }
+        .quiz-section {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+        .quiz-section h2 {
+            color: #FFA500;
+            border-bottom: 2px solid #FFA500;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+        .quiz-question p {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 0.5rem;
+        }
     </style>
 @endsection
 
 @section('content')
 <div class="container">
         <div class="lesson-plan-wrapper">
-            <!-- <div class="premium-badge">پریمیم پلان</div> -->
             <form class="lesson-plan-form" id="lessonPlanForm">
                 <div class="mb-3">
                     <label for="teacher_name">معلم/معلمہ کا نام</label>
@@ -175,7 +201,6 @@
                     <textarea id="learning_outcomes" name="learning_outcomes" class="form-control" rows="3" required></textarea>
                 </div>
 
-                <!-- New fields for Premium Plan -->
                 <div class="mb-3">
                     <label for="quiz_type">کوئز کی قسم</label>
                     <select id="quiz_type" name="quiz_type" class="form-select" required>
@@ -203,7 +228,6 @@
             </form>
 
             <div id="lessonPlanOutput" style="display: none;">
-                <!-- First Table -->
                 <div class="lesson-plan-header">تدریسی منصوبہ (پریمیم)</div>
                 <table class="lesson-plan-table">
                     <tbody>
@@ -250,17 +274,51 @@
                     </tbody>
                 </table>
 
+                <div class="quiz-section">
+                    <h2>کوئز</h2>
+                    <div class="quiz-question">
+                        <p>1. کمپیوٹر پروگرامنگ کی بنیادی زبان کون سی ہے؟</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q1" value="a"> پائتھن</label>
+                            <label><input type="radio" name="q1" value="b"> جاوا</label>
+                            <label><input type="radio" name="q1" value="c"> سی++</label>
+                            <label><input type="radio" name="q1" value="d"> جاوا سکرپٹ</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <p>2. ویب ڈویلپمنٹ کے لیے کون سی زبان سب سے زیادہ استعمال ہوتی ہے؟</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q2" value="a"> HTML</label>
+                            <label><input type="radio" name="q2" value="b"> CSS</label>
+                            <label><input type="radio" name="q2" value="c"> JavaScript</label>
+                            <label><input type="radio" name="q2" value="d"> یہ سب</label>
+                        </div>
+                    </div>
+                    <div class="quiz-question">
+                        <p>3. کمپیوٹر پروگرامنگ میں 'بگ' کیا ہوتا ہے؟</p>
+                        <div class="quiz-options">
+                            <label><input type="radio" name="q3" value="a"> پروگرام میں غلطی</label>
+                            <label><input type="radio" name="q3" value="b"> کمپیوٹر وائرس</label>
+                            <label><input type="radio" name="q3" value="c"> سافٹ ویئر کا نام</label>
+                            <label><input type="radio" name="q3" value="d"> پروگرامنگ کی ایک قسم</label>
+                        </div>
+                    </div>
+                </div>
+
+                
                 <button class="lesson-plan-copy" id="copyButton">کاپی کریں</button>
                 <button class="lesson-plan-copy" id="downloadPdfButton">ڈاؤن لوڈ پی ڈی ایف</button>
 
                 <div class="copy-feedback" id="copyFeedback">منصوبہ کاپی ہو گیا ہے!</div>
+
+
+                
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Sample data for testing
         const sampleData = [
             {
                 teacher_name: "موسیٰ اشفاق",
@@ -274,16 +332,13 @@
                 quiz_type: "کثیر انتخابی سوالات",
                 quiz_question_number: "8"
             },
-            // Add more sample data as needed
         ];
 
         document.getElementById('lessonPlanForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // For testing purposes, we'll use the first item in the sample data
             const data = sampleData[0];
             
-            // Populate the lesson plan output
             document.getElementById('teacherNameOutput').textContent = data.teacher_name;
             document.getElementById('classGroupOutput').textContent = data.grade_level;
             document.getElementById('subjectOutput').textContent = data.subject_topic;
@@ -297,12 +352,10 @@
             document.getElementById('quizTypeOutput').textContent = data.quiz_type;
             document.getElementById('quizQuestionNumberOutput').textContent = data.quiz_question_number;
             
-            // Show the lesson plan output and buttons
             document.getElementById('lessonPlanOutput').style.display = 'block';
             document.getElementById('copyButton').style.display = 'inline-block';
             document.getElementById('downloadPdfButton').style.display = 'inline-block';
             
-            // Scroll to the lesson plan output
             document.getElementById('lessonPlanOutput').scrollIntoView({ behavior: 'smooth' });
         });
 
@@ -328,10 +381,8 @@
         });
 
         document.getElementById('downloadPdfButton').addEventListener('click', function() {
-            // Collect form data
             const formData = new FormData(document.getElementById('lessonPlanForm'));
             
-            // Send a POST request to the server
             fetch('/download-lesson-plan-pdf', {
                 method: 'POST',
                 body: formData,
@@ -341,7 +392,6 @@
             })
             .then(response => response.blob())
             .then(blob => {
-                // Create a temporary URL for the blob
                 const url = window.URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.style.display = 'none';
@@ -355,4 +405,3 @@
         });
     </script>
 @endsection
-
