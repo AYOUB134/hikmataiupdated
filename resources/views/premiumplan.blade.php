@@ -140,6 +140,9 @@
     .matching-quiz-item span {
         margin-left: 10px;
     }
+    #lessonPlanOutput{
+        direction: rtl;
+    }
 </style>
 @endsection
 
