@@ -9,93 +9,96 @@
     body {
         font-family: 'Noto Nastaliq Urdu', serif;
     }
-   .lesson-plan-wrapper {
-            max-width: 800px;
-            margin: 2rem auto;
-        }
-        .lesson-plan-form {
-            margin-bottom: 2rem;
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .lesson-plan-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #333;
-        }
-        .lesson-plan-form input,
-        .lesson-plan-form textarea,
-        .lesson-plan-form select {
-            width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        .lesson-plan-table {
-            border-collapse: collapse;
-            width: 100%;
-            margin-bottom: 2rem;
-        }
-        .lesson-plan-table th, 
-        .lesson-plan-table td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: right;
-        }
-        .lesson-plan-table th {
-            background-color: #FFA500;
-            font-weight: bold;
-            width: 25%;
-            white-space: nowrap;
-        }
-        .lesson-plan-header {
-            background-color: #FFA500;
-            color: black;
-            font-weight: bold;
-            text-align: center;
-            padding: 10px;
-            border: 1px solid black;
-            margin-bottom: 0;
-        }
-        .lesson-plan-submit,
-        .lesson-plan-copy {
-            background-color: #007bff;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s;
-        }
-        .lesson-plan-submit:hover,
-        .lesson-plan-copy:hover {
-            background-color: #0056b3;
-        }
-        .lesson-plan-copy {
-            display: none;
-            margin-top: 1rem;
-            margin-right: 10px;
-        }
-        .copy-feedback {
-            display: none;
-            color: green;
-            margin-top: 0.5rem;
-        }
-        .premium-badge {
-            background-color: gold;
-            color: black;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
-        }
+    .lesson-plan-wrapper {
+        max-width: 800px;
+        margin: 2rem auto;
+    }
+    .lesson-plan-form {
+        margin-bottom: 2rem;
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .lesson-plan-form label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #333;
+        text-align: right;
+    }
+    .lesson-plan-form input,
+    .lesson-plan-form textarea,
+    .lesson-plan-form select {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 1rem;
+        text-align: right;
+    }
+    .lesson-plan-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    .lesson-plan-table th, 
+    .lesson-plan-table td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: right;
+    }
+    .lesson-plan-table th {
+        background-color: #FFA500;
+        font-weight: bold;
+        width: 25%;
+        white-space: nowrap;
+    }
+    .lesson-plan-header {
+        background-color: #FFA500;
+        color: black;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid black;
+        margin-bottom: 0;
+    }
+    .lesson-plan-submit,
+    .lesson-plan-copy {
+        background-color: #007bff;
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s;
+    }
+    .lesson-plan-submit:hover,
+    .lesson-plan-copy:hover {
+        background-color: #0056b3;
+    }
+    .lesson-plan-copy {
+        display: none;
+        margin-top: 1rem;
+        margin-left: 10px;
+    }
+    .copy-feedback {
+        display: none;
+        color: green;
+        margin-top: 0.5rem;
+        text-align: right;
+    }
+    .premium-badge {
+        background-color: gold;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
     .quiz-section {
         background-color: #f8f9fa;
         border: 1px solid #dee2e6;
@@ -109,6 +112,7 @@
         border-bottom: 2px solid #FFA500;
         padding-bottom: 0.5rem;
         margin-bottom: 1rem;
+        text-align: right;
     }
     .quiz-question {
         margin-bottom: 1.5rem;
@@ -116,13 +120,25 @@
     .quiz-question p {
         font-weight: bold;
         margin-bottom: 0.5rem;
+        text-align: right;
     }
     .quiz-options label {
         display: block;
         margin-bottom: 0.5rem;
+        text-align: right;
     }
     .quiz-options input[type="radio"] {
-        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
+    .matching-quiz-item {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+    .matching-quiz-item span {
+        margin-left: 10px;
     }
 </style>
 @endsection
@@ -130,7 +146,6 @@
 @section('content')
 <div class="container">
     <div class="lesson-plan-wrapper">
-        <!-- <div class="premium-badge">پریمیم پلان</div> -->
         <form class="lesson-plan-form" id="lessonPlanForm">
             <div class="mb-3">
                 <label for="teacher_name">معلم/معلمہ کا نام</label>
@@ -141,7 +156,7 @@
                 <label for="class_group">جماعت/فریق</label>
                 <select id="class_group" name="class_group" class="form-select" required>
                     <option value="">منتخب کریں</option>
-                    @for ($i = 1; $i <= 12; $i++)
+                    @for ($i = 1; $i <= 9; $i++)
                         <option value="{{ $i }}">{{ $i }}</option>
                     @endfor
                 </select>
@@ -203,7 +218,6 @@
                 <textarea id="learning_outcomes" name="learning_outcomes" class="form-control" rows="3" required></textarea>
             </div>
 
-            <!-- New fields for Premium Plan -->
             <div class="mb-3">
                 <label for="quiz_type">کوئز کی قسم</label>
                 <select id="quiz_type" name="quiz_type" class="form-select" required>
@@ -217,8 +231,6 @@
                 </select>
             </div>
 
-
-           
             <div class="mb-3">
                 <label for="quiz_question_number">کوئز سوالات کی کل تعداد</label>
                 <select id="quiz_question_number" name="quiz_question_number" class="form-select" required>
@@ -229,12 +241,10 @@
                 </select>
             </div>
 
-
             <button type="submit" class="lesson-plan-submit">منصوبہ بنائیں</button>
         </form>
 
         <div id="lessonPlanOutput" style="display: none;">
-            <!-- First Table -->
             <div class="lesson-plan-header">تدریسی منصوبہ (پریمیم)</div>
             <table class="lesson-plan-table">
                 <tbody>
@@ -294,8 +304,6 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     const sampleData = [
         {
@@ -395,11 +403,23 @@
     document.getElementById('lessonPlanForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        const data = sampleData[0];
-        const selectedQuizType = document.getElementById('quiz_type').value;
-        const selectedQuestionNumber = parseInt(document.getElementById('quiz_question_number').value);
+        const formData = new FormData(this);
+        const selectedQuizType = formData.get('quiz_type');
+        const selectedQuestionNumber = parseInt(formData.get('quiz_question_number'));
         
-        // Populate the lesson plan output (unchanged)
+        // Populate the lesson plan output
+        document.getElementById('teacherNameOutput').textContent = formData.get('teacher_name');
+        document.getElementById('classGroupOutput').textContent = formData.get('class_group');
+        document.getElementById('subjectOutput').textContent = formData.get('subject');
+        document.getElementById('topicOutput').textContent = formData.get('topic');
+        document.getElementById('topicDetailsOutput').textContent = formData.get('topic_details');
+        document.getElementById('periodsOutput').textContent = formData.get('periods');
+        document.getElementById('durationOutput').textContent = formData.get('duration');
+        document.getElementById('classExerciseOutput').textContent = formData.get('class_exercise');
+        document.getElementById('homeworkOutput').textContent = formData.get('homework');
+        document.getElementById('learningOutcomesOutput').textContent = formData.get('learning_outcomes');
+        document.getElementById('quizTypeOutput').textContent = selectedQuizType;
+        document.getElementById('quizQuestionNumberOutput').textContent = selectedQuestionNumber;
         
         // Display the quiz section if a quiz type is selected
         const quizSection = document.getElementById('quizSection');
@@ -440,7 +460,7 @@
                                 <div class="matching-quiz-item">
                                     <span>${option.item}</span>
                                     <select name="q${index}_${optIndex}">
-                                        <option value="">Select a match</option>
+                                        <option value="">جوڑ منتخب کریں</option>
                                         ${q.options.map(o => `<option value="${o.match}">${o.match}</option>`).join('')}
                                     </select>
                                 </div>
@@ -534,4 +554,3 @@
     });
 </script>
 @endsection
-
