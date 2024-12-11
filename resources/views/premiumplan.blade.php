@@ -143,6 +143,7 @@
     #lessonPlanOutput{
         direction: rtl;
     }
+ 
 </style>
 @endsection
 

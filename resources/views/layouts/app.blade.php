@@ -21,18 +21,16 @@
             margin-right: 0;
         }
         .navbar-brand img {
-          
         height: 70px; 
          width: auto; 
-
         }
         .navbar-nav .nav-link {
-    color: #000;
-    font-weight: 500; /* Bold effect using numeric weight */
-    margin: 0 2rem;
-    font-size: 1.5rem;
-    transition: color 0.3s ease;
-}
+            color: #000;
+            font-weight: 500; 
+            margin: 0 2rem;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
 
         .navbar-nav .nav-link:hover {
             color: #FFA500;
@@ -51,12 +49,10 @@
             color: #FFA500;
         }
 
-        /* Center navbar contents for larger screens */
         .navbar-collapse {
             justify-content: center;
         }
 
-        /* Mobile view adjustments */
         @media (max-width: 991px) {
             .navbar {
                 display: flex;
@@ -67,16 +63,101 @@
                 align-items: flex-start;
             }
             .navbar-nav .nav-link {
-                margin-left: 0; /* Reset margin for mobile */
-                padding-left: 1.5rem; /* Add consistent padding */
+                margin-left: 0;
+                padding-left: 1.5rem;
             }
             .user-icon {
-                padding-left: 1.5rem; /* Match the nav links padding */
-                margin-left: 0 !important; /* Override Bootstrap's ms-auto */
-                align-self: flex-start; /* Align to the start of the flex container */
-                width: 100%; /* Take full width to maintain alignment */
-                padding-top: 0.5rem; /* Add some spacing from nav links */
+                padding-left: 1.5rem;
+                margin-left: 0 !important;
+                align-self: flex-start;
+                width: 100%;
+                padding-top: 0.5rem;
                 padding-bottom: 0.5rem;
+            }
+        }
+        .user-dropdown {
+            position: relative;
+        }
+
+        .user-dropdown-toggle {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .user-dropdown-toggle:focus {
+            outline: none;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .user-dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: 100%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .user-dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .user-dropdown-item {
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .user-dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .user-dropdown-item i {
+            font-size: 1.2rem;
+            color: #6c757d;
+        }
+
+        @media (max-width: 991px) {
+            .user-dropdown {
+                width: 100%;
+                padding-left: 1.5rem;
+                margin-top: 1rem;
+            }
+
+            .user-dropdown-menu {
+                position: static;
+                box-shadow: none;
+                border: 1px solid #e9ecef;
+                margin-top: 0.5rem;
             }
         }
     </style>
@@ -85,18 +166,15 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <!-- Logo on the left in mobile view -->
             <a class="navbar-brand" href="/">
                 <img src="{{ asset('/images/hikmat-logo.png') }}" alt="Hikmat Logo">
             </a>
-            
-            <!-- Toggler for mobile view on the right -->
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
-            <!-- Navigation Links -->
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -109,10 +187,29 @@
                         <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact Us</a>
                     </li>
                 </ul>
-                
-                <!-- User Icon -->
-                <div class="user-icon ms-auto">
-                    <a href="#" class="text-dark"><i class="bi bi-person-circle"></i></a>
+
+                <div class="user-dropdown ms-auto">
+                    <button class="user-dropdown-toggle" id="userDropdown" aria-expanded="false">
+                        <div class="user-avatar">
+                            <i class="bi bi-person"></i>
+                        </div>
+                        <span class="d-none d-lg-inline">John Doe</span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="user-dropdown-menu" aria-labelledby="userDropdown">
+                        <a class="user-dropdown-item" href="/userprofile">
+                            <i class="bi bi-person-circle"></i>
+                            Profile
+                        </a>
+                        <!-- <a class="user-dropdown-item" href="#">
+                            <i class="bi bi-gear"></i>
+                            Settings
+                        </a> -->
+                        <a class="user-dropdown-item" href="#">
+                            <i class="bi bi-box-arrow-right"></i>
+                            Logout
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -127,6 +224,22 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const userDropdownToggle = document.querySelector('.user-dropdown-toggle');
+            const userDropdownMenu = document.querySelector('.user-dropdown-menu');
+
+            userDropdownToggle.addEventListener('click', function() {
+                userDropdownMenu.classList.toggle('show');
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!userDropdownToggle.contains(event.target) && !userDropdownMenu.contains(event.target)) {
+                    userDropdownMenu.classList.remove('show');
+                }
+            });
+        });
+    </script>
     @yield('additional_js')
 </body>
 </html>
