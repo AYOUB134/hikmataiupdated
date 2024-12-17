@@ -81,11 +81,11 @@
             <div class="col-md-4">
                 <div class="plan-card">
                     <h2 class="plan-title">Premium</h2>
-                    <div class="plan-price">$2.99</div>
+                    <div class="plan-price"><h4>Rs. 575 – Valid for 7 Days</h4></div>
                     <ul class="plan-features">
-                        <li>✓ Everything in Basic</li>
-                        <li>✓ Story Generator</li>
-                        <li>✓ Quiz Tool</li>
+                        <li>✓ 3 Lesson Plans</li>
+                        <li>✓ 3 Quizzes</li>
+                        <li>✓ 3 Stories</li>
                     </ul>
                     <button class="subscribe-button btn-disabled">Generate Now</button>
                 </div>
